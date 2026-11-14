@@ -9,9 +9,10 @@
   "owner": "user-460c1fec9d5f36f9",
   "reviewer": "user-eb29ab084ca07dda",
   "spec_review": "specs/LOCAL-f637343f6341-对话上下文窗口/reviews/ba16240c33647b08dc38e26e.json",
-  "design_review": null,
+  "design_review": "specs/LOCAL-f637343f6341-对话上下文窗口/reviews/d760252c973abb107d7311c9.json",
   "reviews": [
-    "specs/LOCAL-f637343f6341-对话上下文窗口/reviews/ba16240c33647b08dc38e26e.json"
+    "specs/LOCAL-f637343f6341-对话上下文窗口/reviews/ba16240c33647b08dc38e26e.json",
+    "specs/LOCAL-f637343f6341-对话上下文窗口/reviews/d760252c973abb107d7311c9.json"
   ],
   "tasks": [],
   "artifacts": [],
@@ -24,6 +25,6 @@
   },
   "accepted": null,
   "created_at": "2026-11-14T03:04:37.045585+00:00",
-  "updated_at": "2026-11-14T03:04:38.239525+00:00",
+  "updated_at": "2026-11-14T03:04:38.740252+00:00",
   "updated_by": "user-eb29ab084ca07dda"
 }
