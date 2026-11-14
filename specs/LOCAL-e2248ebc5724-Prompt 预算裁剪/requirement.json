@@ -16,23 +16,39 @@
   ],
   "tasks": [
     {
+      "id": "T1",
       "title": "实现 prompt_budget 并通过两个 AC",
       "owner": "user-460c1fec9d5f36f9",
       "owner_source": "manual",
       "depends": [],
+      "status": "完成",
+      "evidence": "AI报告：新增 agent_tools/prompt_budget.py：estimate_tokens 对空串返回 0、非空按 ceil(len(text)/4) 估算；pack_prompt 按输入顺序装入预算，超预算时跳过低优先级/超长段落并允许后续较短段落填入，高优先级段落可替换低优先级已选段落，返回 segments/used_tokens/dropped 且不修改输入。新增 tests/test_prompt_budget.py，15 个用例覆盖正常、边界和失败场景。业务代码未提交，等待用户自行检查与提交。",
+      "design_review": "specs/LOCAL-e2248ebc5724-Prompt 预算裁剪/reviews/e15869e60240f0b900170d46.json",
       "ac_ids": [
         "AC-1",
         "AC-2"
       ],
       "repos": [],
       "checks": "python -m unittest tests.test_prompt_budget -v",
-      "id": "T1",
-      "status": "待开始",
-      "evidence": "",
-      "design_review": "specs/LOCAL-e2248ebc5724-Prompt 预算裁剪/reviews/e15869e60240f0b900170d46.json"
+      "dev_tool": "湛卢Code",
+      "tool_source": "agent_session",
+      "agent_session_id": "session-cce654ff813b44d4be7fa110fcc8c1d6"
     }
   ],
-  "artifacts": [],
+  "artifacts": [
+    {
+      "id": "06e3b02b9a7f7374",
+      "kind": "report",
+      "path": "specs/LOCAL-e2248ebc5724-Prompt 预算裁剪/artifacts/ai-result-269eeb5a3474.json",
+      "name": "AI实施报告",
+      "source": "AI",
+      "tool": "湛卢Code",
+      "description": "开发与 AC 验证合并回填，正式用户验收另记。",
+      "created_by": "user-460c1fec9d5f36f9",
+      "created_at": "2026-11-14T03:10:59.314525+00:00",
+      "verified_hash": null
+    }
+  ],
   "tests": [],
   "delivery": {
     "code_refs": [],
@@ -42,12 +58,33 @@
   },
   "accepted": null,
   "created_at": "2026-11-14T03:04:29.669152+00:00",
-  "updated_at": "2026-11-14T03:09:57.720391+00:00",
+  "updated_at": "2026-11-14T03:10:59.317216+00:00",
   "updated_by": "user-460c1fec9d5f36f9",
   "prompt_template_versions": {
     "task-claim": 1,
     "development-result": 1,
     "ac-self-check": 1,
     "rework-fix": 1
+  },
+  "development_validation": {
+    "design_proof": "3d443ba5797ac9b7b4aefdfde33ca80e06e377bb87ff3612639b5fa820cc9cce",
+    "tests": [
+      {
+        "ac": "AC-1",
+        "result": "通过",
+        "actual": "单测验证 estimate_tokens('') 返回 0；'a'、'abcd' 返回 1，'abcde' 返回 2，中文文本同样按字符数向上取整。pack_prompt 在预算内按输入顺序返回全部段落，used_tokens 为 4 且不超过 10。",
+        "environment": "macOS 27.0.1；Python 3.9.6；项目根目录 unittest 进程内调用",
+        "evidence": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_prompt_budget -v：Ran 15 tests，OK；EstimateTokensTests 与 PackPromptTests.test_keeps_input_order_when_everything_fits 全部通过"
+      },
+      {
+        "ac": "AC-2",
+        "result": "通过",
+        "actual": "预算 2 时先跳过 12 字符长段落，随后 8 字符短段落成功填入，used_tokens=2；高优先级短段落可替换低优先级已选段落，dropped 正确记录被跳过的低优先级段落；0 至 19 的预算遍历断言 used_tokens 始终不超过预算且等于已选段落 token 之和；输入列表经 deepcopy 对比未被修改。",
+        "environment": "macOS 27.0.1；Python 3.9.6；项目根目录 unittest 进程内调用",
+        "evidence": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_prompt_budget -v：Ran 15 tests，OK；test_skips_oversized_segment_and_fills_with_later_short_segment、test_higher_priority_replaces_lower_priority_selection、test_used_tokens_never_exceeds_budget、test_input_is_not_mutated_and_output_is_copied 通过"
+      }
+    ],
+    "actor": "user-460c1fec9d5f36f9",
+    "at": "2026-11-14T03:10:59.314257+00:00"
   }
 }
