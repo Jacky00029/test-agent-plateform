@@ -1,0 +1,27 @@
+{
+  "id": "LOCAL-e2248ebc5724-Prompt 预算裁剪",
+  "number": "LOCAL-e2248ebc5724",
+  "title": "Prompt 预算裁剪",
+  "version": "v1.0.0",
+  "features": [
+    "F001"
+  ],
+  "owner": "user-460c1fec9d5f36f9",
+  "reviewer": "user-eb29ab084ca07dda",
+  "spec_review": null,
+  "design_review": null,
+  "reviews": [],
+  "tasks": [],
+  "artifacts": [],
+  "tests": [],
+  "delivery": {
+    "code_refs": [],
+    "notes": "",
+    "configuration": "",
+    "no_code_reason": ""
+  },
+  "accepted": null,
+  "created_at": "2026-11-14T03:04:29.669152+00:00",
+  "updated_at": "2026-11-14T03:04:29.669215+00:00",
+  "updated_by": "user-eb29ab084ca07dda"
+}

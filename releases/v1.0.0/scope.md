@@ -19,3 +19,4 @@
 
 | 需求 | 对应功能 | 负责人 | 设计评审人 |
 |---|---|---|---|
+| [Prompt 预算裁剪](../../specs/LOCAL-e2248ebc5724-Prompt%20%E9%A2%84%E7%AE%97%E8%A3%81%E5%89%AA/spec.md) | F001 | agent-dev-a | agent-manager |
