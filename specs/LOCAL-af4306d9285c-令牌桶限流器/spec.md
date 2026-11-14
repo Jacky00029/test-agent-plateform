@@ -8,4 +8,5 @@
 
 | 编号 | 场景、操作与预期 |
 |---|---|
-| AC-1 | 实现明确功能并通过独立测试 |
+| AC-1 | try_acquire 在令牌不足时返回 False 且不扣减；成功时扣减且桶容量不超过 capacity。 |
+| AC-2 | retry_after 返回按 refill_per_second 计算的等待秒数；时钟推进后允许新调用。 |
