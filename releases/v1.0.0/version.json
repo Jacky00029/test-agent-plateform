@@ -48,8 +48,10 @@
   "sources": [
     "releases/v1.0.0/inputs/需规.md"
   ],
-  "scope_proof": null,
+  "scope_proof": "004d4e8315d610e6998752da3ac6f875b660dbf1ff8ef1ee1f2b1d2bce2b9ead",
   "candidates": [],
   "accepted": null,
-  "created_at": "2026-11-14T03:04:29.235261+00:00"
+  "created_at": "2026-11-14T03:04:29.235261+00:00",
+  "scope_confirmed_by": "user-eb29ab084ca07dda",
+  "scope_confirmed_at": "2026-11-14T03:04:29.396962+00:00"
 }
