@@ -20,6 +20,7 @@
 | 需求 | 对应功能 | 负责人 | 设计评审人 |
 |---|---|---|---|
 | [敏感结果脱敏](../../specs/LOCAL-18b30f4f7357-%E6%95%8F%E6%84%9F%E7%BB%93%E6%9E%9C%E8%84%B1%E6%95%8F/spec.md) | F009 | agent-dev-b | agent-manager |
+| [智能体结果评估器](../../specs/LOCAL-2132501f0fc9-%E6%99%BA%E8%83%BD%E4%BD%93%E7%BB%93%E6%9E%9C%E8%AF%84%E4%BC%B0%E5%99%A8/spec.md) | F010 | agent-dev-b | agent-manager |
 | [规则任务路由器](../../specs/LOCAL-8811571a6a2d-%E8%A7%84%E5%88%99%E4%BB%BB%E5%8A%A1%E8%B7%AF%E7%94%B1%E5%99%A8/spec.md) | F005 | agent-dev-a | agent-manager |
 | [工具延迟统计](../../specs/LOCAL-950cd38550bb-%E5%B7%A5%E5%85%B7%E5%BB%B6%E8%BF%9F%E7%BB%9F%E8%AE%A1/spec.md) | F006 | agent-dev-b | agent-manager |
 | [智能退避重试策略](../../specs/LOCAL-a08232a3d1bc-%E6%99%BA%E8%83%BD%E9%80%80%E9%81%BF%E9%87%8D%E8%AF%95%E7%AD%96%E7%95%A5/spec.md) | F003 | agent-dev-a | agent-manager |
