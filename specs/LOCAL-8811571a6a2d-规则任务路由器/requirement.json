@@ -16,23 +16,39 @@
   ],
   "tasks": [
     {
+      "id": "T1",
       "title": "实现 task_router 并通过两个 AC",
       "owner": "user-460c1fec9d5f36f9",
       "owner_source": "manual",
       "depends": [],
+      "status": "完成",
+      "evidence": "AI报告：新增 agent_tools/task_router.py：TaskRouter 支持注册名称、关键词列表和整数 priority；route 用 casefold 做忽略大小写的子串匹配，按命中数降序、priority 降序、注册顺序升序选择规则，无命中返回 general；rules 属性返回防御性副本，register 校验名称、关键词和优先级。新增 tests/test_task_router.py，17 个用例覆盖正常、边界和失败场景。业务代码未提交，等待用户自行检查与提交。",
+      "design_review": "specs/LOCAL-8811571a6a2d-规则任务路由器/reviews/47702b2beb546e3a573d738f.json",
       "ac_ids": [
         "AC-1",
         "AC-2"
       ],
       "repos": [],
       "checks": "python -m unittest tests.test_task_router -v",
-      "id": "T1",
-      "status": "待开始",
-      "evidence": "",
-      "design_review": "specs/LOCAL-8811571a6a2d-规则任务路由器/reviews/47702b2beb546e3a573d738f.json"
+      "dev_tool": "湛卢Code",
+      "tool_source": "agent_session",
+      "agent_session_id": "session-a45533e04feb45f1aa2c94af17d4ce9d"
     }
   ],
-  "artifacts": [],
+  "artifacts": [
+    {
+      "id": "ed6f814945c0fefe",
+      "kind": "report",
+      "path": "specs/LOCAL-8811571a6a2d-规则任务路由器/artifacts/ai-result-468d9ca56219.json",
+      "name": "AI实施报告",
+      "source": "AI",
+      "tool": "湛卢Code",
+      "description": "开发与 AC 验证合并回填，正式用户验收另记。",
+      "created_by": "user-460c1fec9d5f36f9",
+      "created_at": "2026-11-14T03:13:41.287691+00:00",
+      "verified_hash": null
+    }
+  ],
   "tests": [],
   "delivery": {
     "code_refs": [],
@@ -42,12 +58,33 @@
   },
   "accepted": null,
   "created_at": "2026-11-14T03:04:40.163883+00:00",
-  "updated_at": "2026-11-14T03:13:17.194735+00:00",
+  "updated_at": "2026-11-14T03:13:41.289153+00:00",
   "updated_by": "user-460c1fec9d5f36f9",
   "prompt_template_versions": {
     "task-claim": 1,
     "development-result": 1,
     "ac-self-check": 1,
     "rework-fix": 1
+  },
+  "development_validation": {
+    "design_proof": "5338367faad65312e2143ad215df20add479281011a117123b49afe9671e14d7",
+    "tests": [
+      {
+        "ac": "AC-1",
+        "result": "通过",
+        "actual": "3 个关键词命中、priority 0 的 broad 规则优先于 2 个命中、priority 100 的 narrow 规则；命中数相同的 low/high 规则中 priority 5 的 high 胜出；'PYTHON and bug' 与 'python and Bug' 均命中注册关键词 Python/BUG；三条规则组合排序按命中数再按 priority 选择 three-high。",
+        "environment": "macOS 27.0.1；Python 3.9.6；项目根目录 unittest 进程内调用",
+        "evidence": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_task_router -v：Ran 17 tests，OK；RankingTests 全部通过"
+      },
+      {
+        "ac": "AC-2",
+        "result": "通过",
+        "actual": "同命中数、同 priority 的 first/second 规则返回先注册的 first，构造函数传入规则列表也保持顺序；无命中文本和空字符串返回 general，空路由表返回 general；重复关键词在文本中出现三次只计一次命中；rules 属性副本被修改后不影响路由结果。",
+        "environment": "macOS 27.0.1；Python 3.9.6；项目根目录 unittest 进程内调用",
+        "evidence": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_task_router -v：Ran 17 tests，OK；TieAndFallbackTests 全部通过"
+      }
+    ],
+    "actor": "user-460c1fec9d5f36f9",
+    "at": "2026-11-14T03:13:41.287454+00:00"
   }
 }
