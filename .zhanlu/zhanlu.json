@@ -10,7 +10,7 @@
         "/Users/lizeqi/聚合平台交付版本/test-agent-plateform",
         "agent",
         "--actor",
-        "agent-dev-a",
+        "agent-dev-b",
         "--tool-name",
         "湛卢Code"
       ],
