@@ -16,23 +16,39 @@
   ],
   "tasks": [
     {
+      "id": "T1",
       "title": "实现 retry_policy 并通过两个 AC",
       "owner": "user-460c1fec9d5f36f9",
       "owner_source": "manual",
       "depends": [],
+      "status": "完成",
+      "evidence": "AI报告：新增 agent_tools/retry_policy.py：RetryPolicy.delays 生成 base_delay 起按 2 倍增长并以 max_delay 封顶的重试延迟序列（长度 max_attempts-1）；run 对成功调用立即返回，仅重试 retry_on 指定异常，重试耗尽后抛出最后一次异常，非指定异常立即传播；支持 jitter 比例抖动与可注入 sleep/rng，含参数校验。新增 tests/test_retry_policy.py，15 个用例覆盖正常、边界和失败场景。业务代码未提交，等待用户自行检查与提交。",
+      "design_review": "specs/LOCAL-a08232a3d1bc-智能退避重试策略/reviews/01acfc510dcaff09eb930869.json",
       "ac_ids": [
         "AC-1",
         "AC-2"
       ],
       "repos": [],
       "checks": "python -m unittest tests.test_retry_policy -v",
-      "id": "T1",
-      "status": "待开始",
-      "evidence": "",
-      "design_review": "specs/LOCAL-a08232a3d1bc-智能退避重试策略/reviews/01acfc510dcaff09eb930869.json"
+      "dev_tool": "湛卢Code",
+      "tool_source": "agent_session",
+      "agent_session_id": "session-ac0047a01e6b49b08df980a3e46f47da"
     }
   ],
-  "artifacts": [],
+  "artifacts": [
+    {
+      "id": "9fe7beb0d46131de",
+      "kind": "report",
+      "path": "specs/LOCAL-a08232a3d1bc-智能退避重试策略/artifacts/ai-result-f1fa9e9b201e.json",
+      "name": "AI实施报告",
+      "source": "AI",
+      "tool": "湛卢Code",
+      "description": "开发与 AC 验证合并回填，正式用户验收另记。",
+      "created_by": "user-460c1fec9d5f36f9",
+      "created_at": "2026-11-14T03:12:26.345730+00:00",
+      "verified_hash": null
+    }
+  ],
   "tests": [],
   "delivery": {
     "code_refs": [],
@@ -42,12 +58,33 @@
   },
   "accepted": null,
   "created_at": "2026-11-14T03:04:34.344881+00:00",
-  "updated_at": "2026-11-14T03:11:58.556446+00:00",
+  "updated_at": "2026-11-14T03:12:26.348230+00:00",
   "updated_by": "user-460c1fec9d5f36f9",
   "prompt_template_versions": {
     "task-claim": 1,
     "development-result": 1,
     "ac-self-check": 1,
     "rework-fix": 1
+  },
+  "development_validation": {
+    "design_proof": "9668560e941b3f3bfc773ed9497e9f67d035decf3b5bf77e35287579658d00eb",
+    "tests": [
+      {
+        "ac": "AC-1",
+        "result": "通过",
+        "actual": "RetryPolicy(max_attempts=5, base_delay=0.5, max_delay=10).delays 为 (0.5, 1.0, 2.0, 4.0)；max_delay=2 时封顶为 (1.0, 2.0, 2.0, 2.0)；max_attempts=1 时 delays 为空且只调用一次；max_attempts=3 的持续失败函数实际调用 3 次、sleep 2 次。",
+        "environment": "macOS 27.0.1；Python 3.9.6；项目根目录 unittest 进程内调用，sleep 使用注入列表不实际等待",
+        "evidence": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_retry_policy -v：Ran 15 tests，OK；DelayTests 全部通过"
+      },
+      {
+        "ac": "AC-2",
+        "result": "通过",
+        "actual": "成功函数一次调用即返回且无 sleep；RuntimeError 前两次失败、第三次成功时返回 ok 且 sleep 记录为 [0.25, 0.5]；三次不同 ValueError 失败后抛出的是第三个异常对象；retry_on=(RuntimeError,) 时 KeyError 只调用一次并立即传播；jitter=0.5 时注入随机源产生的等待落在 [0.5, 1.5]。",
+        "environment": "macOS 27.0.1；Python 3.9.6；项目根目录 unittest 进程内调用，sleep 使用注入列表不实际等待",
+        "evidence": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_retry_policy -v：Ran 15 tests，OK；RunTests 全部通过"
+      }
+    ],
+    "actor": "user-460c1fec9d5f36f9",
+    "at": "2026-11-14T03:12:26.345473+00:00"
   }
 }
