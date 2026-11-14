@@ -1,0 +1,27 @@
+{
+  "id": "LOCAL-c6c70d6fc045-工具调用参数校验",
+  "number": "LOCAL-c6c70d6fc045",
+  "title": "工具调用参数校验",
+  "version": "v1.0.0",
+  "features": [
+    "F002"
+  ],
+  "owner": "user-460c1fec9d5f36f9",
+  "reviewer": "user-eb29ab084ca07dda",
+  "spec_review": null,
+  "design_review": null,
+  "reviews": [],
+  "tasks": [],
+  "artifacts": [],
+  "tests": [],
+  "delivery": {
+    "code_refs": [],
+    "notes": "",
+    "configuration": "",
+    "no_code_reason": ""
+  },
+  "accepted": null,
+  "created_at": "2026-11-14T03:04:31.776918+00:00",
+  "updated_at": "2026-11-14T03:04:31.776971+00:00",
+  "updated_by": "user-eb29ab084ca07dda"
+}
