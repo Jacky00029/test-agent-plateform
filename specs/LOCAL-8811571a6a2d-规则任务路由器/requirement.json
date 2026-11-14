@@ -1,0 +1,27 @@
+{
+  "id": "LOCAL-8811571a6a2d-规则任务路由器",
+  "number": "LOCAL-8811571a6a2d",
+  "title": "规则任务路由器",
+  "version": "v1.0.0",
+  "features": [
+    "F005"
+  ],
+  "owner": "user-460c1fec9d5f36f9",
+  "reviewer": "user-eb29ab084ca07dda",
+  "spec_review": null,
+  "design_review": null,
+  "reviews": [],
+  "tasks": [],
+  "artifacts": [],
+  "tests": [],
+  "delivery": {
+    "code_refs": [],
+    "notes": "",
+    "configuration": "",
+    "no_code_reason": ""
+  },
+  "accepted": null,
+  "created_at": "2026-11-14T03:04:40.163883+00:00",
+  "updated_at": "2026-11-14T03:04:40.163944+00:00",
+  "updated_by": "user-eb29ab084ca07dda"
+}
