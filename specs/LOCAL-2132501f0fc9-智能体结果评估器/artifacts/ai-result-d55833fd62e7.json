@@ -1,0 +1,35 @@
+{
+  "requirement_id": "LOCAL-2132501f0fc9-智能体结果评估器",
+  "design_review": "specs/LOCAL-2132501f0fc9-智能体结果评估器/reviews/afb077a1f91190aadc61f848.json",
+  "design_proof": "fbc2dfa2b3245f90bca97113002ba9368641fef4484d4bbdb2806ddaa6dfbe0a",
+  "tasks": [
+    {
+      "id": "T1",
+      "evidence": "新增 agent_tools/evaluator.py（evaluate、EvaluationError）与 tests/test_evaluator.py；实现 exact、contains、regex、json_equals 四类检查，返回 total/passed/pass_rate/failures；JSON 字符串解析后按结构比较（键顺序无关、数组顺序敏感、布尔不混同数字），失败项带用例 ID、检查类型与实际原因。python -m unittest tests.test_evaluator -v 通过 29 项；业务代码未提交，等待用户自行检查与提交。"
+    }
+  ],
+  "acceptance_tests": [
+    {
+      "ac": "AC-1",
+      "result": "通过",
+      "actual": "exact 默认生效且区分类型；contains 对子串与序列均可判定；regex 用 re.search 搜索 actual 且非法 pattern 抛 EvaluationError；json_equals 支持 JSON 字符串与对象并按键值结构比较；空用例返回 total=0、passed=0、pass_rate=0.0、failures=[]。",
+      "environment": "macOS-27.0.1-x86_64, Python 3.9.13, /opt/anaconda3/bin/python",
+      "evidence": "python -m unittest tests.test_evaluator -v：ExactCheckTests 5 项、ContainsCheckTests 4 项、RegexCheckTests 4 项、JsonEqualsCheckTests 7 项通过，Ran 29 tests OK。"
+    },
+    {
+      "ac": "AC-2",
+      "result": "通过",
+      "actual": "5 条混合用例（exact 通过/失败、contains 通过、regex 失败、json_equals 通过）统计 total=5、passed=3、pass_rate=0.6，failures 只含 exact-bad 与 regex-bad；每条失败含 id、check、reason，reason 写出期望值/实际值或未匹配 pattern；JSON 键顺序不同仍相等，数组顺序或多余键会失败，输入不被修改。",
+      "environment": "macOS-27.0.1-x86_64, Python 3.9.13, /opt/anaconda3/bin/python",
+      "evidence": "python -m unittest tests.test_evaluator -v：MixedCasesTests 4 项、ValidationTests 5 项通过，Ran 29 tests OK。"
+    }
+  ],
+  "code_refs": [],
+  "checks": [
+    {
+      "command": "python -m unittest tests.test_evaluator -v",
+      "result": "通过",
+      "evidence": "Ran 29 tests in 0.001s, OK"
+    }
+  ]
+}

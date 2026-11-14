@@ -16,23 +16,39 @@
   ],
   "tasks": [
     {
+      "id": "T1",
       "title": "实现 evaluator 并通过两个 AC",
       "owner": "user-07294aa5a2f727dd",
       "owner_source": "manual",
       "depends": [],
+      "status": "完成",
+      "evidence": "AI报告：新增 agent_tools/evaluator.py（evaluate、EvaluationError）与 tests/test_evaluator.py；实现 exact、contains、regex、json_equals 四类检查，返回 total/passed/pass_rate/failures；JSON 字符串解析后按结构比较（键顺序无关、数组顺序敏感、布尔不混同数字），失败项带用例 ID、检查类型与实际原因。python -m unittest tests.test_evaluator -v 通过 29 项；业务代码未提交，等待用户自行检查与提交。",
+      "design_review": "specs/LOCAL-2132501f0fc9-智能体结果评估器/reviews/afb077a1f91190aadc61f848.json",
       "ac_ids": [
         "AC-1",
         "AC-2"
       ],
       "repos": [],
       "checks": "python -m unittest tests.test_evaluator -v",
-      "id": "T1",
-      "status": "待开始",
-      "evidence": "",
-      "design_review": "specs/LOCAL-2132501f0fc9-智能体结果评估器/reviews/afb077a1f91190aadc61f848.json"
+      "dev_tool": "湛卢Code",
+      "tool_source": "agent_session",
+      "agent_session_id": "session-f3546c2ce8364c91a0195e1e2f6b17c7"
     }
   ],
-  "artifacts": [],
+  "artifacts": [
+    {
+      "id": "083ef2aee47591cd",
+      "kind": "report",
+      "path": "specs/LOCAL-2132501f0fc9-智能体结果评估器/artifacts/ai-result-d55833fd62e7.json",
+      "name": "AI实施报告",
+      "source": "AI",
+      "tool": "湛卢Code",
+      "description": "开发与 AC 验证合并回填，正式用户验收另记。",
+      "created_by": "user-07294aa5a2f727dd",
+      "created_at": "2026-11-14T03:27:19.099433+00:00",
+      "verified_hash": null
+    }
+  ],
   "tests": [],
   "delivery": {
     "code_refs": [],
@@ -42,12 +58,33 @@
   },
   "accepted": null,
   "created_at": "2026-11-14T03:05:00.751747+00:00",
-  "updated_at": "2026-11-14T03:26:49.399799+00:00",
+  "updated_at": "2026-11-14T03:27:19.100856+00:00",
   "updated_by": "user-07294aa5a2f727dd",
   "prompt_template_versions": {
     "task-claim": 1,
     "development-result": 1,
     "ac-self-check": 1,
     "rework-fix": 1
+  },
+  "development_validation": {
+    "design_proof": "fbc2dfa2b3245f90bca97113002ba9368641fef4484d4bbdb2806ddaa6dfbe0a",
+    "tests": [
+      {
+        "ac": "AC-1",
+        "result": "通过",
+        "actual": "exact 默认生效且区分类型；contains 对子串与序列均可判定；regex 用 re.search 搜索 actual 且非法 pattern 抛 EvaluationError；json_equals 支持 JSON 字符串与对象并按键值结构比较；空用例返回 total=0、passed=0、pass_rate=0.0、failures=[]。",
+        "environment": "macOS-27.0.1-x86_64, Python 3.9.13, /opt/anaconda3/bin/python",
+        "evidence": "python -m unittest tests.test_evaluator -v：ExactCheckTests 5 项、ContainsCheckTests 4 项、RegexCheckTests 4 项、JsonEqualsCheckTests 7 项通过，Ran 29 tests OK。"
+      },
+      {
+        "ac": "AC-2",
+        "result": "通过",
+        "actual": "5 条混合用例（exact 通过/失败、contains 通过、regex 失败、json_equals 通过）统计 total=5、passed=3、pass_rate=0.6，failures 只含 exact-bad 与 regex-bad；每条失败含 id、check、reason，reason 写出期望值/实际值或未匹配 pattern；JSON 键顺序不同仍相等，数组顺序或多余键会失败，输入不被修改。",
+        "environment": "macOS-27.0.1-x86_64, Python 3.9.13, /opt/anaconda3/bin/python",
+        "evidence": "python -m unittest tests.test_evaluator -v：MixedCasesTests 4 项、ValidationTests 5 项通过，Ran 29 tests OK。"
+      }
+    ],
+    "actor": "user-07294aa5a2f727dd",
+    "at": "2026-11-14T03:27:19.099174+00:00"
   }
 }
