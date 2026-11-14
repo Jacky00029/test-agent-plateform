@@ -9,9 +9,10 @@
   "owner": "user-07294aa5a2f727dd",
   "reviewer": "user-eb29ab084ca07dda",
   "spec_review": "specs/LOCAL-950cd38550bb-工具延迟统计/reviews/ce4321a6eadf83fea32c42a0.json",
-  "design_review": null,
+  "design_review": "specs/LOCAL-950cd38550bb-工具延迟统计/reviews/4f5f65c5b51da00eaca09e6c.json",
   "reviews": [
-    "specs/LOCAL-950cd38550bb-工具延迟统计/reviews/ce4321a6eadf83fea32c42a0.json"
+    "specs/LOCAL-950cd38550bb-工具延迟统计/reviews/ce4321a6eadf83fea32c42a0.json",
+    "specs/LOCAL-950cd38550bb-工具延迟统计/reviews/4f5f65c5b51da00eaca09e6c.json"
   ],
   "tasks": [],
   "artifacts": [],
@@ -24,6 +25,6 @@
   },
   "accepted": null,
   "created_at": "2026-11-14T03:04:43.625124+00:00",
-  "updated_at": "2026-11-14T03:04:45.030427+00:00",
+  "updated_at": "2026-11-14T03:04:45.624697+00:00",
   "updated_by": "user-eb29ab084ca07dda"
 }
