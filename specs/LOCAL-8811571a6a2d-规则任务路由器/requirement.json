@@ -9,9 +9,10 @@
   "owner": "user-460c1fec9d5f36f9",
   "reviewer": "user-eb29ab084ca07dda",
   "spec_review": "specs/LOCAL-8811571a6a2d-规则任务路由器/reviews/01793b1d81ba98c0e3fb5c1a.json",
-  "design_review": null,
+  "design_review": "specs/LOCAL-8811571a6a2d-规则任务路由器/reviews/47702b2beb546e3a573d738f.json",
   "reviews": [
-    "specs/LOCAL-8811571a6a2d-规则任务路由器/reviews/01793b1d81ba98c0e3fb5c1a.json"
+    "specs/LOCAL-8811571a6a2d-规则任务路由器/reviews/01793b1d81ba98c0e3fb5c1a.json",
+    "specs/LOCAL-8811571a6a2d-规则任务路由器/reviews/47702b2beb546e3a573d738f.json"
   ],
   "tasks": [],
   "artifacts": [],
@@ -24,6 +25,6 @@
   },
   "accepted": null,
   "created_at": "2026-11-14T03:04:40.163883+00:00",
-  "updated_at": "2026-11-14T03:04:41.409515+00:00",
+  "updated_at": "2026-11-14T03:04:41.961199+00:00",
   "updated_by": "user-eb29ab084ca07dda"
 }
