@@ -27,3 +27,11 @@
 ## 本地 MCP
 
 项目级 `.zhanlu/zhanlu.json` 将当前开发者连接到 Spec Manager DevelopmentAgent。任务交接、文档、AC 校验、结果回收和过程统计通过 MCP 自动完成，不需要开发者另外填报。
+
+## 当前交付状态
+
+- 10 个需求均已完成开发和平台回收，A/B 各 5 个。
+- 全部 189 项单元测试通过：`python -m unittest discover -s tests -v`。
+- 管理看板显示 AI 主导 100%，共 27 次 MCP 操作，Outbox 未决为 0。
+- 本地平台：`http://127.0.0.1:4187/p/test-agent-plateform/#analytics`
+- 详细交付证据见 `docs/交付报告.md` 和 `docs/analytics-summary.json`。
