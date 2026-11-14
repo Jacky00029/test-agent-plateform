@@ -1,0 +1,35 @@
+{
+  "requirement_id": "LOCAL-18b30f4f7357-敏感结果脱敏",
+  "design_review": "specs/LOCAL-18b30f4f7357-敏感结果脱敏/reviews/f26736e55f3430204d2b35a0.json",
+  "design_proof": "a65d8244dcc4b8250514a440632152de1b18a0c4ac1203fb61e235bfb042cb6f",
+  "tasks": [
+    {
+      "id": "T1",
+      "evidence": "新增 agent_tools/redactor.py（redact、redact_text、is_sensitive_key、RedactorError）与 tests/test_redactor.py；敏感键忽略大小写和 _-. 分隔符递归替换为 [REDACTED]，支持 dict/list/tuple 且不修改输入；redact_text 将 Bearer 后凭据替换为 [REDACTED]，重复执行幂等；循环引用安全截断。python -m unittest tests.test_redactor -v 通过 20 项；业务代码未提交，等待用户自行检查与提交。"
+    }
+  ],
+  "acceptance_tests": [
+    {
+      "ac": "AC-1",
+      "result": "通过",
+      "actual": "password、token、api_key、authorization、secret 全部替换为 [REDACTED]；PASSWORD、Api-Key、X-API-KEY、client_secret、accessToken、Auth 变体同样命中；嵌套 headers.Authorization、request.password、rows[].token/api_key 均被替换；author 等普通键与标量保持不变，输入对象未被修改。",
+      "environment": "macOS-27.0.1-x86_64, Python 3.9.13, /opt/anaconda3/bin/python",
+      "evidence": "python -m unittest tests.test_redactor -v：RedactKeyTests 9 项通过与 SensitiveKeyTests 3 项通过，Ran 20 tests OK。"
+    },
+    {
+      "ac": "AC-2",
+      "result": "通过",
+      "actual": "redact_text('Authorization: Bearer abc.def-123') 输出 'Authorization: Bearer [REDACTED]'；bearer/BEARER 大小写不敏感，多个 Bearer 全部替换；无 Bearer 文本原样返回；连续执行 redact_text 结果不变，redact(redact(x)) 与 redact(x) 相等；非字符串入参抛出 RedactorError。",
+      "environment": "macOS-27.0.1-x86_64, Python 3.9.13, /opt/anaconda3/bin/python",
+      "evidence": "python -m unittest tests.test_redactor -v：RedactTextTests 8 项通过，Ran 20 tests OK。"
+    }
+  ],
+  "code_refs": [],
+  "checks": [
+    {
+      "command": "python -m unittest tests.test_redactor -v",
+      "result": "通过",
+      "evidence": "Ran 20 tests in 0.001s, OK"
+    }
+  ]
+}

@@ -16,23 +16,39 @@
   ],
   "tasks": [
     {
+      "id": "T1",
       "title": "实现 redactor 并通过两个 AC",
       "owner": "user-07294aa5a2f727dd",
       "owner_source": "manual",
       "depends": [],
+      "status": "完成",
+      "evidence": "AI报告：新增 agent_tools/redactor.py（redact、redact_text、is_sensitive_key、RedactorError）与 tests/test_redactor.py；敏感键忽略大小写和 _-. 分隔符递归替换为 [REDACTED]，支持 dict/list/tuple 且不修改输入；redact_text 将 Bearer 后凭据替换为 [REDACTED]，重复执行幂等；循环引用安全截断。python -m unittest tests.test_redactor -v 通过 20 项；业务代码未提交，等待用户自行检查与提交。",
+      "design_review": "specs/LOCAL-18b30f4f7357-敏感结果脱敏/reviews/f26736e55f3430204d2b35a0.json",
       "ac_ids": [
         "AC-1",
         "AC-2"
       ],
       "repos": [],
       "checks": "python -m unittest tests.test_redactor -v",
-      "id": "T1",
-      "status": "待开始",
-      "evidence": "",
-      "design_review": "specs/LOCAL-18b30f4f7357-敏感结果脱敏/reviews/f26736e55f3430204d2b35a0.json"
+      "dev_tool": "湛卢Code",
+      "tool_source": "agent_session",
+      "agent_session_id": "session-c21d6fae1a8641bd97a4efb7b96d0ac0"
     }
   ],
-  "artifacts": [],
+  "artifacts": [
+    {
+      "id": "fbfcd86817c206af",
+      "kind": "report",
+      "path": "specs/LOCAL-18b30f4f7357-敏感结果脱敏/artifacts/ai-result-cf3f6a055074.json",
+      "name": "AI实施报告",
+      "source": "AI",
+      "tool": "湛卢Code",
+      "description": "开发与 AC 验证合并回填，正式用户验收另记。",
+      "created_by": "user-07294aa5a2f727dd",
+      "created_at": "2026-11-14T03:26:37.118359+00:00",
+      "verified_hash": null
+    }
+  ],
   "tests": [],
   "delivery": {
     "code_refs": [],
@@ -42,12 +58,33 @@
   },
   "accepted": null,
   "created_at": "2026-11-14T03:04:55.981433+00:00",
-  "updated_at": "2026-11-14T03:26:09.355003+00:00",
+  "updated_at": "2026-11-14T03:26:37.119818+00:00",
   "updated_by": "user-07294aa5a2f727dd",
   "prompt_template_versions": {
     "task-claim": 1,
     "development-result": 1,
     "ac-self-check": 1,
     "rework-fix": 1
+  },
+  "development_validation": {
+    "design_proof": "a65d8244dcc4b8250514a440632152de1b18a0c4ac1203fb61e235bfb042cb6f",
+    "tests": [
+      {
+        "ac": "AC-1",
+        "result": "通过",
+        "actual": "password、token、api_key、authorization、secret 全部替换为 [REDACTED]；PASSWORD、Api-Key、X-API-KEY、client_secret、accessToken、Auth 变体同样命中；嵌套 headers.Authorization、request.password、rows[].token/api_key 均被替换；author 等普通键与标量保持不变，输入对象未被修改。",
+        "environment": "macOS-27.0.1-x86_64, Python 3.9.13, /opt/anaconda3/bin/python",
+        "evidence": "python -m unittest tests.test_redactor -v：RedactKeyTests 9 项通过与 SensitiveKeyTests 3 项通过，Ran 20 tests OK。"
+      },
+      {
+        "ac": "AC-2",
+        "result": "通过",
+        "actual": "redact_text('Authorization: Bearer abc.def-123') 输出 'Authorization: Bearer [REDACTED]'；bearer/BEARER 大小写不敏感，多个 Bearer 全部替换；无 Bearer 文本原样返回；连续执行 redact_text 结果不变，redact(redact(x)) 与 redact(x) 相等；非字符串入参抛出 RedactorError。",
+        "environment": "macOS-27.0.1-x86_64, Python 3.9.13, /opt/anaconda3/bin/python",
+        "evidence": "python -m unittest tests.test_redactor -v：RedactTextTests 8 项通过，Ran 20 tests OK。"
+      }
+    ],
+    "actor": "user-07294aa5a2f727dd",
+    "at": "2026-11-14T03:26:37.118098+00:00"
   }
 }
