@@ -14,7 +14,24 @@
     "specs/LOCAL-e2248ebc5724-Prompt 预算裁剪/reviews/76efc08fa49f5bacf6b721ec.json",
     "specs/LOCAL-e2248ebc5724-Prompt 预算裁剪/reviews/e15869e60240f0b900170d46.json"
   ],
-  "tasks": [],
+  "tasks": [
+    {
+      "title": "实现 prompt_budget 并通过两个 AC",
+      "owner": "user-460c1fec9d5f36f9",
+      "owner_source": "manual",
+      "depends": [],
+      "ac_ids": [
+        "AC-1",
+        "AC-2"
+      ],
+      "repos": [],
+      "checks": "python -m unittest tests.test_prompt_budget -v",
+      "id": "T1",
+      "status": "待开始",
+      "evidence": "",
+      "design_review": "specs/LOCAL-e2248ebc5724-Prompt 预算裁剪/reviews/e15869e60240f0b900170d46.json"
+    }
+  ],
   "artifacts": [],
   "tests": [],
   "delivery": {
@@ -25,6 +42,6 @@
   },
   "accepted": null,
   "created_at": "2026-11-14T03:04:29.669152+00:00",
-  "updated_at": "2026-11-14T03:04:30.808635+00:00",
+  "updated_at": "2026-11-14T03:04:31.229883+00:00",
   "updated_by": "user-eb29ab084ca07dda"
 }

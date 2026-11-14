@@ -4,3 +4,4 @@
 
 | 任务 | 内容 | 负责人 | 依赖 | AC/范围 | 检查标准 | 状态 | 证据 |
 |---|---|---|---|---|---|---|---|
+| T1 | 实现 prompt_budget 并通过两个 AC | agent-dev-a |  | AC-1, AC-2 | python -m unittest tests.test_prompt_budget -v | 待开始 |  |
