@@ -16,23 +16,39 @@
   ],
   "tasks": [
     {
+      "id": "T1",
       "title": "实现 conversation_window 并通过两个 AC",
       "owner": "user-460c1fec9d5f36f9",
       "owner_source": "manual",
       "depends": [],
+      "status": "完成",
+      "evidence": "AI报告：新增 agent_tools/conversation_window.py：estimate_tokens 按 ceil(len/4) 估算；fit_messages 始终保留开头连续 system 消息（即使超出预算），剩余预算从最新消息向前保留连续后缀，返回 window/dropped/used_tokens，消息经 deepcopy 返回且不修改输入。新增 tests/test_conversation_window.py，14 个用例覆盖正常、边界和失败场景。业务代码未提交，等待用户自行检查与提交。",
+      "design_review": "specs/LOCAL-f637343f6341-对话上下文窗口/reviews/d760252c973abb107d7311c9.json",
       "ac_ids": [
         "AC-1",
         "AC-2"
       ],
       "repos": [],
       "checks": "python -m unittest tests.test_conversation_window -v",
-      "id": "T1",
-      "status": "待开始",
-      "evidence": "",
-      "design_review": "specs/LOCAL-f637343f6341-对话上下文窗口/reviews/d760252c973abb107d7311c9.json"
+      "dev_tool": "湛卢Code",
+      "tool_source": "agent_session",
+      "agent_session_id": "session-6ee636dbaf9641b6983bd1cc7ce053a2"
     }
   ],
-  "artifacts": [],
+  "artifacts": [
+    {
+      "id": "035be380a1319ac0",
+      "kind": "report",
+      "path": "specs/LOCAL-f637343f6341-对话上下文窗口/artifacts/ai-result-a71a55225e94.json",
+      "name": "AI实施报告",
+      "source": "AI",
+      "tool": "湛卢Code",
+      "description": "开发与 AC 验证合并回填，正式用户验收另记。",
+      "created_by": "user-460c1fec9d5f36f9",
+      "created_at": "2026-11-14T03:13:06.305428+00:00",
+      "verified_hash": null
+    }
+  ],
   "tests": [],
   "delivery": {
     "code_refs": [],
@@ -42,12 +58,33 @@
   },
   "accepted": null,
   "created_at": "2026-11-14T03:04:37.045585+00:00",
-  "updated_at": "2026-11-14T03:12:40.067449+00:00",
+  "updated_at": "2026-11-14T03:13:06.306894+00:00",
   "updated_by": "user-460c1fec9d5f36f9",
   "prompt_template_versions": {
     "task-claim": 1,
     "development-result": 1,
     "ac-self-check": 1,
     "rework-fix": 1
+  },
+  "development_validation": {
+    "design_proof": "8a263557ba8ebd54b6779e8a918e1068ca47668947fe98bf8a2176867c958e8b",
+    "tests": [
+      {
+        "ac": "AC-1",
+        "result": "通过",
+        "actual": "预算 4 时 window 为 system('sys!') + assistant('bbbbbbbb') + user('cccc')，保留开头 system 并从最新消息向前填满；多个连续 system 消息在预算 2 下全部保留；system 自身 3 token 超过预算 2 时仍保留且 used_tokens=3；不在开头的 system 作为普通可选消息处理；window 内最近消息保持原时间顺序。",
+        "environment": "macOS 27.0.1；Python 3.9.6；项目根目录 unittest 进程内调用",
+        "evidence": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_conversation_window -v：Ran 14 tests，OK；FitMessagesTests 中 system 保留与顺序相关用例全部通过"
+      },
+      {
+        "ac": "AC-2",
+        "result": "通过",
+        "actual": "返回值包含 window、dropped、used_tokens；预算 4 的 4 条消息示例 dropped=1，预算 2 且最新消息 3 token 放不下时 dropped=2、仅保留 system；空输入返回 dropped=0；预算 0 丢弃全部可选消息；deepcopy 对比确认输入列表与消息字典未被修改，修改 window 内嵌套 meta 不影响输入。",
+        "environment": "macOS 27.0.1；Python 3.9.6；项目根目录 unittest 进程内调用",
+        "evidence": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_conversation_window -v：Ran 14 tests，OK；test_newest_message_that_does_not_fit_stops_the_window、test_input_is_not_mutated_and_window_is_copied、test_zero_budget_drops_optional_messages 通过"
+      }
+    ],
+    "actor": "user-460c1fec9d5f36f9",
+    "at": "2026-11-14T03:13:06.305172+00:00"
   }
 }
