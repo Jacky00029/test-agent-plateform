@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "name": "test-agent-plateform",
+  "repositories": [],
+  "capabilities": {
+    "database": false,
+    "apifox": false
+  }
+}

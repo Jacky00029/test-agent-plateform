@@ -1,0 +1,28 @@
+{
+  "$schema": "https://app.kilo.ai/config.json",
+  "mcp": {
+    "spec-manager": {
+      "type": "local",
+      "command": [
+        "/opt/anaconda3/bin/python",
+        "/Users/lizeqi/聚合平台交付版本/spec-manager/spec_manager.py",
+        "--root",
+        "/Users/lizeqi/聚合平台交付版本/test-agent-plateform",
+        "agent",
+        "--actor",
+        "agent-dev-a",
+        "--tool-name",
+        "湛卢Code"
+      ],
+      "enabled": true,
+      "timeout": 60000
+    }
+  },
+  "permission": {
+    "spec-manager_*": "allow",
+    "bash": "allow",
+    "edit": "allow",
+    "read": "allow"
+  },
+  "snapshot": false
+}
