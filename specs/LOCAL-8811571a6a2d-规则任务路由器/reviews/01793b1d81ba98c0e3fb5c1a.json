@@ -1,0 +1,9 @@
+{
+  "kind": "spec",
+  "verdict": "approve",
+  "reviewer": "user-eb29ab084ca07dda",
+  "name": "agent-manager",
+  "comment": "管理者确认两个 AC 与工具边界",
+  "at": "2026-11-14T03:04:41.408759+00:00",
+  "proof": "a14bc1af40e5f590d2a50ecc8829d81936e9157afc4685d7415b5266d839b13a"
+}

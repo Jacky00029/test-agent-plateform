@@ -1,0 +1,90 @@
+{
+  "id": "LOCAL-c6c70d6fc045-工具调用参数校验",
+  "number": "LOCAL-c6c70d6fc045",
+  "title": "工具调用参数校验",
+  "version": "v1.0.0",
+  "features": [
+    "F002"
+  ],
+  "owner": "user-460c1fec9d5f36f9",
+  "reviewer": "user-eb29ab084ca07dda",
+  "spec_review": "specs/LOCAL-c6c70d6fc045-工具调用参数校验/reviews/e0768c2f0204e752bffb6397.json",
+  "design_review": "specs/LOCAL-c6c70d6fc045-工具调用参数校验/reviews/fecdb11860fa3489951e4329.json",
+  "reviews": [
+    "specs/LOCAL-c6c70d6fc045-工具调用参数校验/reviews/e0768c2f0204e752bffb6397.json",
+    "specs/LOCAL-c6c70d6fc045-工具调用参数校验/reviews/fecdb11860fa3489951e4329.json"
+  ],
+  "tasks": [
+    {
+      "id": "T1",
+      "title": "实现 call_validator 并通过两个 AC",
+      "owner": "user-460c1fec9d5f36f9",
+      "owner_source": "manual",
+      "depends": [],
+      "status": "完成",
+      "evidence": "AI报告：新增 agent_tools/call_validator.py：ToolCallError 携带 field 路径；validate_call 校验 JSON Schema 子集的 object/properties/required/additionalProperties，支持 string/integer/number/boolean/array/object 及数组 items 递归校验，合法参数返回深拷贝。新增 tests/test_call_validator.py，20 个用例覆盖正常、嵌套、边界和失败场景。业务代码未提交，等待用户自行检查与提交。",
+      "design_review": "specs/LOCAL-c6c70d6fc045-工具调用参数校验/reviews/fecdb11860fa3489951e4329.json",
+      "ac_ids": [
+        "AC-1",
+        "AC-2"
+      ],
+      "repos": [],
+      "checks": "python -m unittest tests.test_call_validator -v",
+      "dev_tool": "湛卢Code",
+      "tool_source": "agent_session",
+      "agent_session_id": "session-3330e2b08f7042bca7cef26a93d34055"
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "cc085ff48f5306c2",
+      "kind": "report",
+      "path": "specs/LOCAL-c6c70d6fc045-工具调用参数校验/artifacts/ai-result-8c2039fd278b.json",
+      "name": "AI实施报告",
+      "source": "AI",
+      "tool": "湛卢Code",
+      "description": "开发与 AC 验证合并回填，正式用户验收另记。",
+      "created_by": "user-460c1fec9d5f36f9",
+      "created_at": "2026-11-14T03:11:44.782884+00:00",
+      "verified_hash": null
+    }
+  ],
+  "tests": [],
+  "delivery": {
+    "code_refs": [],
+    "notes": "",
+    "configuration": "",
+    "no_code_reason": ""
+  },
+  "accepted": null,
+  "created_at": "2026-11-14T03:04:31.776918+00:00",
+  "updated_at": "2026-11-14T03:11:44.784905+00:00",
+  "updated_by": "user-460c1fec9d5f36f9",
+  "prompt_template_versions": {
+    "task-claim": 1,
+    "development-result": 1,
+    "ac-self-check": 1,
+    "rework-fix": 1
+  },
+  "development_validation": {
+    "design_proof": "a12681b473595a71682587182077ba797c841f48b2f51f0d84c4176fa6ed9c57",
+    "tests": [
+      {
+        "ac": "AC-1",
+        "result": "通过",
+        "actual": "required 缺失时 ToolCallError.field 为缺失字段名（嵌套为 user.name）；类型错误时 field 为出错字段（数组元素为 tags[1]）；未声明字段时 field 为 extra、user.role，消息包含 unexpected。三类错误均抛出 ToolCallError 并可被 ValueError 捕获。",
+        "environment": "macOS 27.0.1；Python 3.9.6；项目根目录 unittest 进程内调用",
+        "evidence": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_call_validator -v：Ran 20 tests，OK；RequiredFieldTests、TypeErrorTests、UndeclaredFieldTests 全部通过"
+      },
+      {
+        "ac": "AC-2",
+        "result": "通过",
+        "actual": "string/integer/number/boolean/array/object 六种类型及 array items 校验均通过；integer 拒绝 bool/float，number 接受 int/float 拒绝 bool，boolean 只接受 bool；合法输入返回等值副本，结果与输入的 list/dict 均非同一对象，修改返回值不影响输入，schema 也未被修改。",
+        "environment": "macOS 27.0.1；Python 3.9.6；项目根目录 unittest 进程内调用",
+        "evidence": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_call_validator -v：Ran 20 tests，OK；SupportedTypeTests.test_all_supported_types_validate、test_arguments_are_not_mutated、test_schema_is_not_mutated 通过"
+      }
+    ],
+    "actor": "user-460c1fec9d5f36f9",
+    "at": "2026-11-14T03:11:44.782634+00:00"
+  }
+}

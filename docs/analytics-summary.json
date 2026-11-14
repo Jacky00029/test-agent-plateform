@@ -1,0 +1,75 @@
+{
+  "totals": {
+    "requirements_completed": 0,
+    "tasks_completed": 10,
+    "events": 197,
+    "ai_generated": {
+      "numerator": 10,
+      "denominator": 10,
+      "sample_count": 10,
+      "unknown_count": 0,
+      "value": 1.0
+    },
+    "active_seconds": 68.81744623184204,
+    "agent_sessions": 24,
+    "agent_operations": 27,
+    "agent_operation_seconds": 66.32120200000001
+  },
+  "members": [
+    {
+      "member_name": "agent-dev-b",
+      "tasks_completed": 5,
+      "active_seconds": 51.59512734413147,
+      "agent_operations": 16,
+      "agent_operation_seconds": 50.115111
+    },
+    {
+      "member_name": "agent-dev-a",
+      "tasks_completed": 5,
+      "active_seconds": 17.22231888771057,
+      "agent_operations": 11,
+      "agent_operation_seconds": 16.206091
+    }
+  ],
+  "tools": [
+    {
+      "name": "湛卢Code",
+      "tasks_completed": 10,
+      "agent_operations": 27,
+      "agent_errors": 1,
+      "agent_retries": 0
+    }
+  ],
+  "ai": [
+    {
+      "name": "AI主导",
+      "tasks_completed": 10,
+      "task_share": {
+        "numerator": 10,
+        "denominator": 10,
+        "sample_count": 10,
+        "unknown_count": 0,
+        "value": 1.0
+      },
+      "average_seconds": 863.3429729938507,
+      "duration_sample_count": 10,
+      "approximate_count": 10,
+      "first_pass": {
+        "numerator": 0,
+        "denominator": 0,
+        "sample_count": 0,
+        "unknown_count": 10,
+        "value": null
+      },
+      "ai_participation": "AI主导"
+    }
+  ],
+  "cache": {
+    "pending": false,
+    "stale": false,
+    "error": "",
+    "cursor": "e804e4ec219b9dc9f1350f01f3753361df46f7ed",
+    "updated_at": "1794628360.9076438",
+    "job_id": "job-3"
+  }
+}

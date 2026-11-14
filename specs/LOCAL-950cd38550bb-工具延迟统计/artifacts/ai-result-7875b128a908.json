@@ -1,0 +1,35 @@
+{
+  "requirement_id": "LOCAL-950cd38550bb-工具延迟统计",
+  "design_review": "specs/LOCAL-950cd38550bb-工具延迟统计/reviews/4f5f65c5b51da00eaca09e6c.json",
+  "design_proof": "d4ff0f7d9d88c7f35522685a15d5d1fdd67bd0914defda04e1f13445a9bf7f39",
+  "tasks": [
+    {
+      "id": "T1",
+      "evidence": "新增 agent_tools/latency_tracker.py（LatencyTracker、nearest_rank、LatencyTrackerError）与 tests/test_latency_tracker.py；实现 record/measure/summary/reset，summary 返回 count、error_count、error_rate、avg_ms、p50_ms、p95_ms、total_ms；百分位为 nearest-rank（ceil(p/100*n)）；measure 成功与异常均记录实际耗时且异常继续抛出；无样本统计量为 unknown。python -m unittest tests.test_latency_tracker -v 通过 21 项；业务代码未提交，等待用户自行检查与提交。"
+    }
+  ],
+  "acceptance_tests": [
+    {
+      "ac": "AC-1",
+      "result": "通过",
+      "actual": "summary('search') 返回 tool、count、error_count、error_rate、avg_ms、p50_ms、p95_ms、total_ms；样本 [10,20,30,40] 得到 count=4、avg_ms=25.0、p50_ms=20.0、p95_ms=40.0、total_ms=100.0；含 2 个 error 时 error_rate=0.5。",
+      "environment": "macOS-27.0.1-x86_64, Python 3.9.13, /opt/anaconda3/bin/python",
+      "evidence": "python -m unittest tests.test_latency_tracker -v：SummaryTests 8 项通过，Ran 21 tests OK。"
+    },
+    {
+      "ac": "AC-2",
+      "result": "通过",
+      "actual": "nearest_rank 对 [10..100] 的 p50=50、p95=100，对 [1,2,3] 的 p95=3，均按 ceil 排名且不改动入参；measure 在成功与 RuntimeError 场景各记录 1 条耗时，异常继续向上抛出；空工具 summary 的 avg_ms/p50_ms/p95_ms 均为 'unknown'。",
+      "environment": "macOS-27.0.1-x86_64, Python 3.9.13, /opt/anaconda3/bin/python",
+      "evidence": "python -m unittest tests.test_latency_tracker -v：NearestRankTests 4 项、MeasureTests 5 项、ValidationTests 4 项通过，Ran 21 tests OK。"
+    }
+  ],
+  "code_refs": [],
+  "checks": [
+    {
+      "command": "python -m unittest tests.test_latency_tracker -v",
+      "result": "通过",
+      "evidence": "Ran 21 tests in 0.001s, OK"
+    }
+  ]
+}

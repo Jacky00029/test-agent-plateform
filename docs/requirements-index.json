@@ -1,0 +1,82 @@
+[
+  {
+    "number": 1,
+    "module": "prompt_budget",
+    "title": "Prompt 预算裁剪",
+    "requirement_id": "LOCAL-e2248ebc5724-Prompt 预算裁剪",
+    "task_id": "T1",
+    "owner": "agent-dev-a"
+  },
+  {
+    "number": 2,
+    "module": "call_validator",
+    "title": "工具调用参数校验",
+    "requirement_id": "LOCAL-c6c70d6fc045-工具调用参数校验",
+    "task_id": "T1",
+    "owner": "agent-dev-a"
+  },
+  {
+    "number": 3,
+    "module": "retry_policy",
+    "title": "智能退避重试策略",
+    "requirement_id": "LOCAL-a08232a3d1bc-智能退避重试策略",
+    "task_id": "T1",
+    "owner": "agent-dev-a"
+  },
+  {
+    "number": 4,
+    "module": "conversation_window",
+    "title": "对话上下文窗口",
+    "requirement_id": "LOCAL-f637343f6341-对话上下文窗口",
+    "task_id": "T1",
+    "owner": "agent-dev-a"
+  },
+  {
+    "number": 5,
+    "module": "task_router",
+    "title": "规则任务路由器",
+    "requirement_id": "LOCAL-8811571a6a2d-规则任务路由器",
+    "task_id": "T1",
+    "owner": "agent-dev-a"
+  },
+  {
+    "number": 6,
+    "module": "latency_tracker",
+    "title": "工具延迟统计",
+    "requirement_id": "LOCAL-950cd38550bb-工具延迟统计",
+    "task_id": "T1",
+    "owner": "agent-dev-b"
+  },
+  {
+    "number": 7,
+    "module": "ttl_cache",
+    "title": "TTL 智能缓存",
+    "requirement_id": "LOCAL-cab223a89063-TTL 智能缓存",
+    "task_id": "T1",
+    "owner": "agent-dev-b"
+  },
+  {
+    "number": 8,
+    "module": "rate_limiter",
+    "title": "令牌桶限流器",
+    "requirement_id": "LOCAL-af4306d9285c-令牌桶限流器",
+    "task_id": "T1",
+    "owner": "agent-dev-b"
+  },
+  {
+    "number": 9,
+    "module": "redactor",
+    "title": "敏感结果脱敏",
+    "requirement_id": "LOCAL-18b30f4f7357-敏感结果脱敏",
+    "task_id": "T1",
+    "owner": "agent-dev-b"
+  },
+  {
+    "number": 10,
+    "module": "evaluator",
+    "title": "智能体结果评估器",
+    "requirement_id": "LOCAL-2132501f0fc9-智能体结果评估器",
+    "task_id": "T1",
+    "owner": "agent-dev-b"
+  }
+]

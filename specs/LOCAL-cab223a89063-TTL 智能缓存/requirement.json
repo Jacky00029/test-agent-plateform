@@ -1,0 +1,90 @@
+{
+  "id": "LOCAL-cab223a89063-TTL 智能缓存",
+  "number": "LOCAL-cab223a89063",
+  "title": "TTL 智能缓存",
+  "version": "v1.0.0",
+  "features": [
+    "F007"
+  ],
+  "owner": "user-07294aa5a2f727dd",
+  "reviewer": "user-eb29ab084ca07dda",
+  "spec_review": "specs/LOCAL-cab223a89063-TTL 智能缓存/reviews/3aa9548f69d3436f5e3b21d1.json",
+  "design_review": "specs/LOCAL-cab223a89063-TTL 智能缓存/reviews/e15dd727fe95f80223eb2043.json",
+  "reviews": [
+    "specs/LOCAL-cab223a89063-TTL 智能缓存/reviews/3aa9548f69d3436f5e3b21d1.json",
+    "specs/LOCAL-cab223a89063-TTL 智能缓存/reviews/e15dd727fe95f80223eb2043.json"
+  ],
+  "tasks": [
+    {
+      "id": "T1",
+      "title": "实现 ttl_cache 并通过两个 AC",
+      "owner": "user-07294aa5a2f727dd",
+      "owner_source": "manual",
+      "depends": [],
+      "status": "完成",
+      "evidence": "AI报告：新增 agent_tools/ttl_cache.py（TTLCache、TTLCacheError）与 tests/test_ttl_cache.py；实现 get/set/get_or_compute/purge_expired/items/clear 与 len 语义；TTL 内复用、过期重算，producer 异常不写入缓存，注入时钟可验证过期，len 只统计未过期键，maxsize 按最近使用淘汰。python -m unittest tests.test_ttl_cache -v 通过 19 项；业务代码未提交，等待用户自行检查与提交。",
+      "design_review": "specs/LOCAL-cab223a89063-TTL 智能缓存/reviews/e15dd727fe95f80223eb2043.json",
+      "ac_ids": [
+        "AC-1",
+        "AC-2"
+      ],
+      "repos": [],
+      "checks": "python -m unittest tests.test_ttl_cache -v",
+      "dev_tool": "湛卢Code",
+      "tool_source": "agent_session",
+      "agent_session_id": "session-fb4efa59085e4e63998342bd1f3b9b1d"
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "22ee0c5215ec5467",
+      "kind": "report",
+      "path": "specs/LOCAL-cab223a89063-TTL 智能缓存/artifacts/ai-result-00d09c99862b.json",
+      "name": "AI实施报告",
+      "source": "AI",
+      "tool": "湛卢Code",
+      "description": "开发与 AC 验证合并回填，正式用户验收另记。",
+      "created_by": "user-07294aa5a2f727dd",
+      "created_at": "2026-11-14T03:25:11.702431+00:00",
+      "verified_hash": null
+    }
+  ],
+  "tests": [],
+  "delivery": {
+    "code_refs": [],
+    "notes": "",
+    "configuration": "",
+    "no_code_reason": ""
+  },
+  "accepted": null,
+  "created_at": "2026-11-14T03:04:47.362123+00:00",
+  "updated_at": "2026-11-14T03:25:11.703873+00:00",
+  "updated_by": "user-07294aa5a2f727dd",
+  "prompt_template_versions": {
+    "task-claim": 1,
+    "development-result": 1,
+    "ac-self-check": 1,
+    "rework-fix": 1
+  },
+  "development_validation": {
+    "design_proof": "8a35a461dbf092e340b52616e569443475119d4810aa03bf716912df072ed828",
+    "tests": [
+      {
+        "ac": "AC-1",
+        "result": "通过",
+        "actual": "get_or_compute 在 ttl=10 内（推进 9.999s）producer 仅调用 1 次并复用首值；推进到 10s 后重新计算得到第二个值；purge_expired 在 a 过期、b 未过期时返回 1 并只删除 a，再次调用返回 0。",
+        "environment": "macOS-27.0.1-x86_64, Python 3.9.13, /opt/anaconda3/bin/python",
+        "evidence": "python -m unittest tests.test_ttl_cache -v：GetOrComputeTests 7 项、PurgeAndLengthTests 5 项通过，Ran 19 tests OK。"
+      },
+      {
+        "ac": "AC-2",
+        "result": "通过",
+        "actual": "producer 抛 RuntimeError/ValueError 时异常向上抛出，缓存保持空或旧值已过期不可读，下一次调用会真实重试（calls=2）；注入 FakeClock 推进 10s 后 len 由 2 变为 0；把时钟回拨后 len 恢复为 1，证明 len 只计数未过期键且不删除条目。",
+        "environment": "macOS-27.0.1-x86_64, Python 3.9.13, /opt/anaconda3/bin/python",
+        "evidence": "python -m unittest tests.test_ttl_cache -v：producer 失败 2 项、时钟与 len 3 项通过，Ran 19 tests OK。"
+      }
+    ],
+    "actor": "user-07294aa5a2f727dd",
+    "at": "2026-11-14T03:25:11.702201+00:00"
+  }
+}

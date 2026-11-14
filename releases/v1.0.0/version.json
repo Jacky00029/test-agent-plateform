@@ -1,0 +1,57 @@
+{
+  "id": "v1.0.0",
+  "title": "智能体工具首个版本",
+  "owner": "user-eb29ab084ca07dda",
+  "previous": "",
+  "features": [
+    {
+      "id": "F001",
+      "text": "Prompt 预算裁剪"
+    },
+    {
+      "id": "F002",
+      "text": "工具调用参数校验"
+    },
+    {
+      "id": "F003",
+      "text": "智能退避重试策略"
+    },
+    {
+      "id": "F004",
+      "text": "对话上下文窗口"
+    },
+    {
+      "id": "F005",
+      "text": "规则任务路由器"
+    },
+    {
+      "id": "F006",
+      "text": "工具延迟统计"
+    },
+    {
+      "id": "F007",
+      "text": "TTL 智能缓存"
+    },
+    {
+      "id": "F008",
+      "text": "令牌桶限流器"
+    },
+    {
+      "id": "F009",
+      "text": "敏感结果脱敏"
+    },
+    {
+      "id": "F010",
+      "text": "智能体结果评估器"
+    }
+  ],
+  "sources": [
+    "releases/v1.0.0/inputs/需规.md"
+  ],
+  "scope_proof": "004d4e8315d610e6998752da3ac6f875b660dbf1ff8ef1ee1f2b1d2bce2b9ead",
+  "candidates": [],
+  "accepted": null,
+  "created_at": "2026-11-14T03:04:29.235261+00:00",
+  "scope_confirmed_by": "user-eb29ab084ca07dda",
+  "scope_confirmed_at": "2026-11-14T03:04:29.396962+00:00"
+}
