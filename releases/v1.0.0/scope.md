@@ -20,6 +20,7 @@
 | 需求 | 对应功能 | 负责人 | 设计评审人 |
 |---|---|---|---|
 | [规则任务路由器](../../specs/LOCAL-8811571a6a2d-%E8%A7%84%E5%88%99%E4%BB%BB%E5%8A%A1%E8%B7%AF%E7%94%B1%E5%99%A8/spec.md) | F005 | agent-dev-a | agent-manager |
+| [工具延迟统计](../../specs/LOCAL-950cd38550bb-%E5%B7%A5%E5%85%B7%E5%BB%B6%E8%BF%9F%E7%BB%9F%E8%AE%A1/spec.md) | F006 | agent-dev-b | agent-manager |
 | [智能退避重试策略](../../specs/LOCAL-a08232a3d1bc-%E6%99%BA%E8%83%BD%E9%80%80%E9%81%BF%E9%87%8D%E8%AF%95%E7%AD%96%E7%95%A5/spec.md) | F003 | agent-dev-a | agent-manager |
 | [工具调用参数校验](../../specs/LOCAL-c6c70d6fc045-%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C/spec.md) | F002 | agent-dev-a | agent-manager |
 | [Prompt 预算裁剪](../../specs/LOCAL-e2248ebc5724-Prompt%20%E9%A2%84%E7%AE%97%E8%A3%81%E5%89%AA/spec.md) | F001 | agent-dev-a | agent-manager |
