@@ -8,4 +8,5 @@
 
 | 编号 | 场景、操作与预期 |
 |---|---|
-| AC-1 | 实现明确功能并通过独立测试 |
+| AC-1 | LatencyTracker.summary 返回 count、error_count、error_rate、avg_ms、p50_ms、p95_ms 和 total_ms。 |
+| AC-2 | 百分位使用 nearest-rank；measure 成功/异常都记录实际耗时，异常继续抛出且空工具无样本时显示 unknown。 |
