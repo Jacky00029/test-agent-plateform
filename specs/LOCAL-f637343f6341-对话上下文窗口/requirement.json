@@ -1,0 +1,27 @@
+{
+  "id": "LOCAL-f637343f6341-对话上下文窗口",
+  "number": "LOCAL-f637343f6341",
+  "title": "对话上下文窗口",
+  "version": "v1.0.0",
+  "features": [
+    "F004"
+  ],
+  "owner": "user-460c1fec9d5f36f9",
+  "reviewer": "user-eb29ab084ca07dda",
+  "spec_review": null,
+  "design_review": null,
+  "reviews": [],
+  "tasks": [],
+  "artifacts": [],
+  "tests": [],
+  "delivery": {
+    "code_refs": [],
+    "notes": "",
+    "configuration": "",
+    "no_code_reason": ""
+  },
+  "accepted": null,
+  "created_at": "2026-11-14T03:04:37.045585+00:00",
+  "updated_at": "2026-11-14T03:04:37.045650+00:00",
+  "updated_by": "user-eb29ab084ca07dda"
+}

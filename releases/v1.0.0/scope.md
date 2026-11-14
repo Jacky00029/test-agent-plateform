@@ -22,3 +22,4 @@
 | [智能退避重试策略](../../specs/LOCAL-a08232a3d1bc-%E6%99%BA%E8%83%BD%E9%80%80%E9%81%BF%E9%87%8D%E8%AF%95%E7%AD%96%E7%95%A5/spec.md) | F003 | agent-dev-a | agent-manager |
 | [工具调用参数校验](../../specs/LOCAL-c6c70d6fc045-%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C/spec.md) | F002 | agent-dev-a | agent-manager |
 | [Prompt 预算裁剪](../../specs/LOCAL-e2248ebc5724-Prompt%20%E9%A2%84%E7%AE%97%E8%A3%81%E5%89%AA/spec.md) | F001 | agent-dev-a | agent-manager |
+| [对话上下文窗口](../../specs/LOCAL-f637343f6341-%E5%AF%B9%E8%AF%9D%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AA%97%E5%8F%A3/spec.md) | F004 | agent-dev-a | agent-manager |
