@@ -9,9 +9,10 @@
   "owner": "user-460c1fec9d5f36f9",
   "reviewer": "user-eb29ab084ca07dda",
   "spec_review": "specs/LOCAL-e2248ebc5724-Prompt 预算裁剪/reviews/76efc08fa49f5bacf6b721ec.json",
-  "design_review": null,
+  "design_review": "specs/LOCAL-e2248ebc5724-Prompt 预算裁剪/reviews/e15869e60240f0b900170d46.json",
   "reviews": [
-    "specs/LOCAL-e2248ebc5724-Prompt 预算裁剪/reviews/76efc08fa49f5bacf6b721ec.json"
+    "specs/LOCAL-e2248ebc5724-Prompt 预算裁剪/reviews/76efc08fa49f5bacf6b721ec.json",
+    "specs/LOCAL-e2248ebc5724-Prompt 预算裁剪/reviews/e15869e60240f0b900170d46.json"
   ],
   "tasks": [],
   "artifacts": [],
@@ -24,6 +25,6 @@
   },
   "accepted": null,
   "created_at": "2026-11-14T03:04:29.669152+00:00",
-  "updated_at": "2026-11-14T03:04:30.432772+00:00",
+  "updated_at": "2026-11-14T03:04:30.808635+00:00",
   "updated_by": "user-eb29ab084ca07dda"
 }
