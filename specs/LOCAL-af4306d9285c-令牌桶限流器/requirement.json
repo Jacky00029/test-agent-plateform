@@ -16,23 +16,39 @@
   ],
   "tasks": [
     {
+      "id": "T1",
       "title": "实现 rate_limiter 并通过两个 AC",
       "owner": "user-07294aa5a2f727dd",
       "owner_source": "manual",
       "depends": [],
+      "status": "完成",
+      "evidence": "AI报告：新增 agent_tools/rate_limiter.py（TokenBucket、RateLimiterError）与 tests/test_rate_limiter.py；实现容量内突发、按 refill_per_second 惰性补充、try_acquire 不足不扣减、retry_after 计算等待秒数且不消耗令牌，注入时钟验证补充与上限。python -m unittest tests.test_rate_limiter -v 通过 19 项；业务代码未提交，等待用户自行检查与提交。",
+      "design_review": "specs/LOCAL-af4306d9285c-令牌桶限流器/reviews/ab9e48c8f50bb4fd2bb67559.json",
       "ac_ids": [
         "AC-1",
         "AC-2"
       ],
       "repos": [],
       "checks": "python -m unittest tests.test_rate_limiter -v",
-      "id": "T1",
-      "status": "待开始",
-      "evidence": "",
-      "design_review": "specs/LOCAL-af4306d9285c-令牌桶限流器/reviews/ab9e48c8f50bb4fd2bb67559.json"
+      "dev_tool": "湛卢Code",
+      "tool_source": "agent_session",
+      "agent_session_id": "session-dccc43cbe901432b801e986cd7584b4f"
     }
   ],
-  "artifacts": [],
+  "artifacts": [
+    {
+      "id": "2b039b3d2558911c",
+      "kind": "report",
+      "path": "specs/LOCAL-af4306d9285c-令牌桶限流器/artifacts/ai-result-4335f851c115.json",
+      "name": "AI实施报告",
+      "source": "AI",
+      "tool": "湛卢Code",
+      "description": "开发与 AC 验证合并回填，正式用户验收另记。",
+      "created_by": "user-07294aa5a2f727dd",
+      "created_at": "2026-11-14T03:25:50.930698+00:00",
+      "verified_hash": null
+    }
+  ],
   "tests": [],
   "delivery": {
     "code_refs": [],
@@ -42,12 +58,33 @@
   },
   "accepted": null,
   "created_at": "2026-11-14T03:04:51.458576+00:00",
-  "updated_at": "2026-11-14T03:25:25.266608+00:00",
+  "updated_at": "2026-11-14T03:25:50.932187+00:00",
   "updated_by": "user-07294aa5a2f727dd",
   "prompt_template_versions": {
     "task-claim": 1,
     "development-result": 1,
     "ac-self-check": 1,
     "rework-fix": 1
+  },
+  "development_validation": {
+    "design_proof": "ab90cfcf36396482b155e110ede145bbb3630ee5e81879e2f414ba595463e90e",
+    "tests": [
+      {
+        "ac": "AC-1",
+        "result": "通过",
+        "actual": "capacity=3 时连续 3 次 try_acquire 成功、第 4 次返回 False；capacity=2 用掉 1 个后请求 2 个返回 False 且 tokens 仍为 1；成功请求 2 个后 tokens 精确减为 3；推进 1000s 后 tokens 仍等于 capacity=4，不超过容量。",
+        "environment": "macOS-27.0.1-x86_64, Python 3.9.13, /opt/anaconda3/bin/python",
+        "evidence": "python -m unittest tests.test_rate_limiter -v：AcquireTests 8 项通过，Ran 19 tests OK。"
+      },
+      {
+        "ac": "AC-2",
+        "result": "通过",
+        "actual": "capacity=2、rate=2/s 用尽后 retry_after(1)=0.5、retry_after(2)=1.0；partial 场景下剩余 1 个令牌、需 2 个时等待 1.0，推进 0.25s 后变为 0.75；按 retry_after 推进时钟后 try_acquire 成功；请求超过 capacity 返回 inf。",
+        "environment": "macOS-27.0.1-x86_64, Python 3.9.13, /opt/anaconda3/bin/python",
+        "evidence": "python -m unittest tests.test_rate_limiter -v：RetryAfterTests 6 项通过，Ran 19 tests OK。"
+      }
+    ],
+    "actor": "user-07294aa5a2f727dd",
+    "at": "2026-11-14T03:25:50.930435+00:00"
   }
 }
