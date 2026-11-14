@@ -9,9 +9,10 @@
   "owner": "user-07294aa5a2f727dd",
   "reviewer": "user-eb29ab084ca07dda",
   "spec_review": "specs/LOCAL-18b30f4f7357-敏感结果脱敏/reviews/437dc0b45aaeb14ce90b32f8.json",
-  "design_review": null,
+  "design_review": "specs/LOCAL-18b30f4f7357-敏感结果脱敏/reviews/f26736e55f3430204d2b35a0.json",
   "reviews": [
-    "specs/LOCAL-18b30f4f7357-敏感结果脱敏/reviews/437dc0b45aaeb14ce90b32f8.json"
+    "specs/LOCAL-18b30f4f7357-敏感结果脱敏/reviews/437dc0b45aaeb14ce90b32f8.json",
+    "specs/LOCAL-18b30f4f7357-敏感结果脱敏/reviews/f26736e55f3430204d2b35a0.json"
   ],
   "tasks": [],
   "artifacts": [],
@@ -24,6 +25,6 @@
   },
   "accepted": null,
   "created_at": "2026-11-14T03:04:55.981433+00:00",
-  "updated_at": "2026-11-14T03:04:57.745525+00:00",
+  "updated_at": "2026-11-14T03:04:58.511893+00:00",
   "updated_by": "user-eb29ab084ca07dda"
 }
