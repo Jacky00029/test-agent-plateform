@@ -14,7 +14,24 @@
     "specs/LOCAL-a08232a3d1bc-智能退避重试策略/reviews/2831e9a3375af1fd0076b0d2.json",
     "specs/LOCAL-a08232a3d1bc-智能退避重试策略/reviews/01acfc510dcaff09eb930869.json"
   ],
-  "tasks": [],
+  "tasks": [
+    {
+      "title": "实现 retry_policy 并通过两个 AC",
+      "owner": "user-460c1fec9d5f36f9",
+      "owner_source": "manual",
+      "depends": [],
+      "ac_ids": [
+        "AC-1",
+        "AC-2"
+      ],
+      "repos": [],
+      "checks": "python -m unittest tests.test_retry_policy -v",
+      "id": "T1",
+      "status": "待开始",
+      "evidence": "",
+      "design_review": "specs/LOCAL-a08232a3d1bc-智能退避重试策略/reviews/01acfc510dcaff09eb930869.json"
+    }
+  ],
   "artifacts": [],
   "tests": [],
   "delivery": {
@@ -25,6 +42,6 @@
   },
   "accepted": null,
   "created_at": "2026-11-14T03:04:34.344881+00:00",
-  "updated_at": "2026-11-14T03:04:35.913914+00:00",
+  "updated_at": "2026-11-14T03:04:36.236001+00:00",
   "updated_by": "user-eb29ab084ca07dda"
 }
