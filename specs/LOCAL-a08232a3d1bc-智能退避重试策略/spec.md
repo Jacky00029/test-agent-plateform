@@ -8,4 +8,5 @@
 
 | 编号 | 场景、操作与预期 |
 |---|---|
-| AC-1 | 实现明确功能并通过独立测试 |
+| AC-1 | RetryPolicy.delays 按 base_delay 指数增长并受 max_delay 限制；max_attempts 控制总调用次数。 |
+| AC-2 | run 对成功调用立即返回，对指定异常重试并保留最后一次异常；非指定异常不重试。 |
