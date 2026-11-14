@@ -14,7 +14,24 @@
     "specs/LOCAL-8811571a6a2d-规则任务路由器/reviews/01793b1d81ba98c0e3fb5c1a.json",
     "specs/LOCAL-8811571a6a2d-规则任务路由器/reviews/47702b2beb546e3a573d738f.json"
   ],
-  "tasks": [],
+  "tasks": [
+    {
+      "title": "实现 task_router 并通过两个 AC",
+      "owner": "user-460c1fec9d5f36f9",
+      "owner_source": "manual",
+      "depends": [],
+      "ac_ids": [
+        "AC-1",
+        "AC-2"
+      ],
+      "repos": [],
+      "checks": "python -m unittest tests.test_task_router -v",
+      "id": "T1",
+      "status": "待开始",
+      "evidence": "",
+      "design_review": "specs/LOCAL-8811571a6a2d-规则任务路由器/reviews/47702b2beb546e3a573d738f.json"
+    }
+  ],
   "artifacts": [],
   "tests": [],
   "delivery": {
@@ -25,6 +42,6 @@
   },
   "accepted": null,
   "created_at": "2026-11-14T03:04:40.163883+00:00",
-  "updated_at": "2026-11-14T03:04:41.961199+00:00",
+  "updated_at": "2026-11-14T03:04:42.562513+00:00",
   "updated_by": "user-eb29ab084ca07dda"
 }
