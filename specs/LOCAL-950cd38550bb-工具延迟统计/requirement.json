@@ -14,7 +14,24 @@
     "specs/LOCAL-950cd38550bb-工具延迟统计/reviews/ce4321a6eadf83fea32c42a0.json",
     "specs/LOCAL-950cd38550bb-工具延迟统计/reviews/4f5f65c5b51da00eaca09e6c.json"
   ],
-  "tasks": [],
+  "tasks": [
+    {
+      "title": "实现 latency_tracker 并通过两个 AC",
+      "owner": "user-07294aa5a2f727dd",
+      "owner_source": "manual",
+      "depends": [],
+      "ac_ids": [
+        "AC-1",
+        "AC-2"
+      ],
+      "repos": [],
+      "checks": "python -m unittest tests.test_latency_tracker -v",
+      "id": "T1",
+      "status": "待开始",
+      "evidence": "",
+      "design_review": "specs/LOCAL-950cd38550bb-工具延迟统计/reviews/4f5f65c5b51da00eaca09e6c.json"
+    }
+  ],
   "artifacts": [],
   "tests": [],
   "delivery": {
@@ -25,6 +42,6 @@
   },
   "accepted": null,
   "created_at": "2026-11-14T03:04:43.625124+00:00",
-  "updated_at": "2026-11-14T03:04:45.624697+00:00",
+  "updated_at": "2026-11-14T03:04:46.258383+00:00",
   "updated_by": "user-eb29ab084ca07dda"
 }
