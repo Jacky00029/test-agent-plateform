@@ -1,5 +1,4 @@
 {
-  "$schema": "https://app.kilo.ai/config.json",
   "mcp": {
     "spec-manager": {
       "type": "local",
